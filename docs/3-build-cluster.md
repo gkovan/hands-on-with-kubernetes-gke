@@ -84,6 +84,22 @@ Deploy "hello world" application to get something up and running on your new clu
 kubectl run hello-world --replicas=5 --labels="run=load-balancer-example" --image=gcr.io/google-samples/node-hello:1.0  --port=8080
 ```
 
+## 4a. Expose the hello-world app 
+
+Expose the container. Note that the type="LoadBalancer option in kubectl requests that Google Cloud Platform provision a load balancer for your container, which is billed per the regular Load Balancer pricing.
+
+```
+kubectl expose deployment hello-world --type="LoadBalancer"
+```
+
+## 4b. Get the ip address
+
+```
+kubectl get service hello-node
+```
+## 4c. Access the app
+
+http://EXTERNAL-IP:8080
 
 ## 5. Tour of Dashboard (the official UI of Kubernetes)
 
